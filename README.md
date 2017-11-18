@@ -9,8 +9,6 @@ This tiny package removes the maintenance of updating `index.js` files that simp
 [![dependencies](https://david-dm.org/rjhilgefort/export-dir.svg)](https://david-dm.org/rjhilgefort/export-dir)
 [![devDependencies Status](https://david-dm.org/rjhilgefort/export-dir/dev-status.svg)](https://david-dm.org/rjhilgefort/export-dir?type=dev)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-
-[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/rjhilgefort/export-dir)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
 
