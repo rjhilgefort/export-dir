@@ -1,4 +1,4 @@
-# @rjh/export-dir
+# @rjhilgefort/export-dir
 
 Declarative `index.js` builder for exporting files in the same directory.
 
@@ -9,10 +9,10 @@ This tiny package removes the maintenance of updating `index.js` files that simp
 ## Installation
 
 ```
-yarn add @rjh/export-dir
+yarn add @rjhilgefort/export-dir
 ```
 ```
-npm install --save @rjh/export-dir
+npm install --save @rjhilgefort/export-dir
 ```
 
 
@@ -22,14 +22,14 @@ npm install --save @rjh/export-dir
 **Basic Usage**
 
 ```js
-module.exports = require('@rjh/export-dir')(null, __dirname)
+module.exports = require('@rjhilgefort/export-dir')(null, __dirname)
 ```
 
 **With Default `transform`**
 
 ```js
 const camelCase = require('lodash.camelcase')
-module.exports = require('@rjh/export-dir')(camelcase, __dirname)
+module.exports = require('@rjhilgefort/export-dir')(camelcase, __dirname)
 ```
 
 **With Custom `transform`**
@@ -39,7 +39,7 @@ const { compose } = require('ramda')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
 module.exports =
-  require('@rjh/export-dir')(
+  require('@rjhilgefort/export-dir')(
     compose(upperFirst, camelCase),
     __dirname,
   )
@@ -97,11 +97,11 @@ const { foo, bar, baz } = require('./lib');
 
 We're done, except that this is a pain to maintain. Every time we add a new method, we have to go update our index file. If we forget, we'll have a runtime error when trying to deconstruct our new method in app. This package aims to solve the problem by allowing you to setup rules for how the index file should be built, and then not having to worry about it anymore.
 
-Here's what our `lib/index.js` and `app.js` looks like when using `@rjh/export-dir`:
+Here's what our `lib/index.js` and `app.js` looks like when using `@rjhilgefort/export-dir`:
 
 ```js
 // lib/index.js
-const exportDir = require('@rjh/export-dir')
+const exportDir = require('@rjhilgefort/export-dir')
 module.exports = exportDir(null, __dirname)
 
 // app.js
