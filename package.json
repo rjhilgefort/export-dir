@@ -1,6 +1,6 @@
 {
   "name": "@rjhilgefort/export-dir",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Declarative `index.js` builder for exporting files in the same directory.",
   "main": "index.js",
   "repository": "git@github.com:rjhilgefort/export-dir.git",
