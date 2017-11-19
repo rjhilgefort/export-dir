@@ -124,6 +124,7 @@ const { foo, bar, baz } = require('./lib');
 The function is autocurried, so you can call it however you would like, with a caveat being that you must call it will all parameters.
 
 `exportDir :: (String -> String) => String<Dir> -> Object`
+
 `exportDir :: (transformation, path) => ({ })`
 
 ### Behavior
