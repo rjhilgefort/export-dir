@@ -12,12 +12,12 @@
   },
   "scripts": {
     "lint": "esw *.js ",
-    "lint:fix": "esw --fix *.js",
-    "lint:watch": "esw --watch *.js",
+    "lint:fix": "yarn lint --fix",
+    "lint:watch": "yarn lint --watch",
     "lint:staged": "lint-staged",
     "test": "jest --verbose",
     "test:watch": "yarn test --watch -o",
-    "precommit": "yarn run lint:fix && lint-staged"
+    "precommit": "yarn lint:fix && lint-staged"
   },
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
