@@ -1,0 +1,18 @@
+---
+language: node_js
+node_js:
+  - "node"
+  - "8.9"
+  - "4"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - yarn install
+
+script:
+  - yarn run test
