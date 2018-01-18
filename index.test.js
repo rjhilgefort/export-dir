@@ -1,9 +1,12 @@
 jest.mock('fs')
-// prettier-ignore
-const { compose, keys } = require('ramda')
 const fs = require('fs')
-
+const { compose, keys } = require('ramda')
+const camelCase = require('lodash.camelcase')
+const upperFirst = require('lodash.upperfirst')
+const Mocks = require('./test/mocks')
 const exportDir = require('./index')
+
+const upperCamelCase = compose(upperFirst, camelCase)
 
 const LOG_HI = () => console.log('hi')
 
@@ -21,15 +24,19 @@ const MOCK_FILE_INFO = {
 jest.mock('/lib/foo', () => 'hi')
 jest.mock('/lib/foo.js', () => 'hi')
 
-describe('exportDir', () => {
-  beforeEach(() => {
-    // eslint-disable-next-line no-underscore-dangle
-    fs.__setMockFiles(MOCK_FILE_INFO)
-  })
+beforeEach(() => {
+  // eslint-disable-next-line no-underscore-dangle
+  fs.__setMockFiles(MOCK_FILE_INFO)
+})
 
-  it('includes all files in the directory in the summary', () => {
-    const expected = ['foo', 'bar', 'baz', 'fooFile', 'barFile', 'bazFile']
-    const actual = compose(keys, exportDir(null))('/lib')
-    expect(actual).toBe(expected)
-  })
+it('applies default transform on "happy" files', () => {
+  const expected = ['barFunc', 'bar', 'bazSomeFunc', 'baz', 'fooFunc', 'foo']
+  const actual = compose(keys, exportDir(null))('/lib')
+  expect(actual).toEqual(expected)
+})
+
+it('applies custom transform on "happy" files', () => {
+  const expected = ['BarFunc', 'Bar', 'BazSomeFunc', 'Baz', 'FooFunc', 'Foo']
+  const actual = compose(keys, exportDir(upperCamelCase))('/lib')
+  expect(actual).toEqual(expected)
 })
