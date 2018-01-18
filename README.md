@@ -4,8 +4,8 @@ Declarative `index.js` builder for exporting files in the same directory.
 
 This tiny package removes the maintenance of updating `index.js` files that simply `require` and export all of the files in the same directory to allow for a deconstuctable interface of the folder.
 
-[![GitHub version](https://badge.fury.io/gh/rjhilgefort%2Fexport-dir.svg)](https://badge.fury.io/gh/rjhilgefort%2Fexport-dir)
 [![npm version](https://badge.fury.io/js/%40rjhilgefort%2Fexport-dir.svg)](https://badge.fury.io/js/%40rjhilgefort%2Fexport-dir)
+[![Build Status](https://travis-ci.org/rjhilgefort/export-dir.svg?branch=master)](https://travis-ci.org/rjhilgefort/export-dir)
 [![dependencies](https://david-dm.org/rjhilgefort/export-dir.svg)](https://david-dm.org/rjhilgefort/export-dir)
 [![devDependencies Status](https://david-dm.org/rjhilgefort/export-dir/dev-status.svg)](https://david-dm.org/rjhilgefort/export-dir?type=dev)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
