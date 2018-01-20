@@ -9,7 +9,7 @@ const { VALID_EXTENSION_R } = require('./lib/constants');
 const filterFiles = require('./lib/filter-files');
 const requireFile = require('./lib/require-file');
 
-// exportDir :: (String -> String) => String<Dir> -> Object
+// fromFiles :: (String -> String) => String<Dir> -> Object
 module.exports = curry((transform, dir) => {
   const transformKey = compose(
     defaultTo(camelCase, transform),

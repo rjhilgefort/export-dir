@@ -50,39 +50,55 @@ fromExports :: (transformation, path) => ({ })
 
 Something more formal will come, but for now, here's some notes about the behavior. This applies to all methods/modes of operation.
 
-- All `.js` and `.json` files will be exported.
-- `*.test.js` files will be ignored.
-- `index.js` will be ignored.
-- `lodash.camelcase` is the default transformation.
+- General
+   - All `.js` and `.json` files will be exported.
+   - `*.test.js` files will be ignored.
+   - `index.js` will be ignored.
+- `fromFiles`
+   - `lodash.camelcase` is the default transformation.
+- `fromExports`
+   - The `name` property of the export is the default transformation.
+   - If a key can not be determined, that file/export is omitted from the results (see `tests`/`mocks`).
 
 
 
 ## Usage
 
-**Basic Usage**
+#### Files names as subject for transforms to keys
 
 ```js
-module.exports = require('@rjhilgefort/export-dir')(null, __dirname)
+// Basic one-liner
+module.exports = require('@rjhilgefort/export-dir').fromFiles(null, __dirname);
+
+// With `transform` (this is the default)
+const camelCase = require('lodash.camelcase');
+const { fromFiles } = require('@rjhilgefort/export-dir');
+module.exports = fromFiles(camelcase, __dirname);
+
+// With Custom `transform`
+const { compose } = require('ramda');
+const camelCase = require('lodash.camelcase');
+const upperFirst = require('lodash.upperfirst');
+const { fromFiles } = require('@rjhilgefort/export-dir');
+module.exports = fromFiles(compose(upperFirst, camelCase), __dirname);
 ```
 
-**With Default `transform`**
+#### Exports as subject for transforms to keys
+
 
 ```js
-const camelCase = require('lodash.camelcase')
-module.exports = require('@rjhilgefort/export-dir')(camelcase, __dirname)
-```
+// Folder of classes one-liner
+module.exports = require('@rjhilgefort/export-dir').fromExports(null, __dirname);
 
-**With Custom `transform`**
+// Folder of classes, with `transform` (this is the default)
+const { prop } = require('ramda');
+const { fromExports } = require('@rjhilgefort/export-dir');
+module.exports = fromExports(prop('name'), __dirname);
 
-```js
-const { compose } = require('ramda')
-const camelCase = require('lodash.camelcase')
-const upperFirst = require('lodash.upperfirst')
-module.exports =
-  require('@rjhilgefort/export-dir')(
-    compose(upperFirst, camelCase),
-    __dirname,
-  )
+// Folder of similarly structured objects: `{ constant: 'identifier' }`
+const { prop } = require('ramda');
+const { fromExports } = require('@rjhilgefort/export-dir');
+module.exports = fromExports(prop('constant'), __dirname);
 ```
 
 
@@ -141,8 +157,8 @@ Here's what our `lib/index.js` and `app.js` looks like when using `@rjhilgefort/
 
 ```js
 // lib/index.js
-const exportDir = require('@rjhilgefort/export-dir')
-module.exports = exportDir(null, __dirname)
+const { fromFiles } = require('@rjhilgefort/export-dir');
+module.exports = fromFiles(null, __dirname);
 
 // app.js
 const { foo, bar, baz } = require('./lib');
@@ -156,4 +172,4 @@ const { foo, bar, baz } = require('./lib');
 > Though ES modules in Node.js is right around the corner, this is still a pattern that will likely be around in legacy code for some time.
 
 **Why does this need to exist when there's others that have implemented the same thing, and with more features?**
-> I didn't find one that had everything I wanted and I didn't want to work in their respective code bases. I just made this for me. I'm surprised you're even reading this.
+> I didn't find one that had everything I wanted and I didn't want to work in their respective code bases.

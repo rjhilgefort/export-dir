@@ -8,11 +8,23 @@ const Mocks = ({
   get root() {
     return path.join(this.rootFolder, '__mocks__');
   },
-  get happy() {
-    return path.join(this.root, 'happy');
+  get files() {
+    return path.join(this.root, 'files');
   },
   get ignoredFiles() {
     return path.join(this.root, 'ignored-files');
+  },
+  get exportsClasses() {
+    return path.join(this.root, 'exports-classes');
+  },
+  get exportsObjects() {
+    return path.join(this.root, 'exports-objects');
+  },
+  get exportsFunctions() {
+    return path.join(this.root, 'exports-functions');
+  },
+  get exportsDefaults() {
+    return path.join(this.root, 'exports-defaults');
   },
 });
 
