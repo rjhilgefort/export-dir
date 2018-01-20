@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 // prettier-ignore
 const Mocks = ({
@@ -13,4 +13,4 @@ const Mocks = ({
   },
 })
 
-module.exports = Mocks
+module.exports = Mocks;

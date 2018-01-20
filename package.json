@@ -52,14 +52,9 @@
       "jest": true
     },
     "rules": {
-      "semi": [
-        "error",
-        "never"
-      ],
       "prettier/prettier": [
         "error",
         {
-          "semi": false,
           "singleQuote": true,
           "trailingComma": "all"
         }
