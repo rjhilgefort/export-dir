@@ -17,7 +17,7 @@
     "lint:staged": "lint-staged",
     "test": "jest --verbose",
     "test:watch": "yarn test --watch -o",
-    "precommit": "yarn lint:fix && lint-staged"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "lodash.camelcase": "^4.3.0",

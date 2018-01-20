@@ -1,22 +1,10 @@
-const { compose, keys } = require('ramda');
-const camelCase = require('lodash.camelcase');
-const upperFirst = require('lodash.upperfirst');
-const Mocks = require('../test/mocks');
+const { keys } = require('ramda');
 const exportDir = require('./index');
 
-const upperCamelCase = compose(upperFirst, camelCase);
-
-// NOTE: See __mocks__ directory
-const mocks = Mocks();
-
-it('applies default transform on "happy" files', () => {
-  const expected = ['barFunc', 'bar', 'bazSomeFunc', 'baz', 'fooFunc', 'foo'];
-  const actual = compose(keys, exportDir(null))(mocks.happy);
-  expect(actual).toEqual(expected);
-});
-
-it('applies custom transform on "happy" files', () => {
-  const expected = ['BarFunc', 'Bar', 'BazSomeFunc', 'Baz', 'FooFunc', 'Foo'];
-  const actual = compose(keys, exportDir(upperCamelCase))(mocks.happy);
+// TODO: Could be more robust and check that they are functions
+//       with a specific arity and blah blah blah
+it('exports documented interface', () => {
+  const actual = ['fromFiles' /* , 'fromExports' */];
+  const expected = keys(exportDir);
   expect(actual).toEqual(expected);
 });
