@@ -24,6 +24,39 @@ npm install --save @rjhilgefort/export-dir
 
 
 
+## Docs
+
+Two functions/modes of operation and both are autocurried, so you can call them however you would like (with a caveat being that you must call it will all parameters).
+
+### `fromFiles`
+
+Allows you to apply a transformation on the file name as the exported key.
+
+```
+fromFiles :: (String -> String) => String<Dir> -> Object
+fromFiles :: (transformation, path) => ({ })
+```
+
+### `fromExports`
+
+Allows you to apply a transformation on the exports of the file as the exported key.
+
+```
+fromExports :: (* -> String) => String<Dir> -> Object
+fromExports :: (transformation, path) => ({ })
+```
+
+### Behavior
+
+Something more formal will come, but for now, here's some notes about the behavior. This applies to all methods/modes of operation.
+
+- All `.js` and `.json` files will be exported.
+- `*.test.js` files will be ignored.
+- `index.js` will be ignored.
+- `lodash.camelcase` is the default transformation.
+
+
+
 ## Usage
 
 **Basic Usage**
@@ -114,27 +147,6 @@ module.exports = exportDir(null, __dirname)
 // app.js
 const { foo, bar, baz } = require('./lib');
 ```
-
-
-
-## Docs
-
-### Signature
-
-The function is autocurried, so you can call it however you would like, with a caveat being that you must call it will all parameters.
-
-`exportDir :: (String -> String) => String<Dir> -> Object`
-
-`exportDir :: (transformation, path) => ({ })`
-
-### Behavior
-
-Something more formal will come, but for now, here's some notes about the behavior.
-
-- All `.js` and `.json` files will be exported.
-- `.tests.js` files will be ignored.
-- `index.js` will be ignored.
-- `lodash.camelcase` is the default transformation.
 
 
 

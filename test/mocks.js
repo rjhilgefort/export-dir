@@ -6,11 +6,14 @@ const Mocks = ({
 } = {}) => ({
   rootFolder,
   get root() {
-    return path.join(this.rootFolder, '__mocks__')
+    return path.join(this.rootFolder, '__mocks__');
   },
   get happy() {
-    return path.join(this.root, 'happy')
+    return path.join(this.root, 'happy');
   },
-})
+  get ignoredFiles() {
+    return path.join(this.root, 'ignored-files');
+  },
+});
 
 module.exports = Mocks;

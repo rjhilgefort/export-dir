@@ -15,7 +15,7 @@
     "lint:fix": "yarn lint --fix",
     "lint:watch": "yarn lint --watch",
     "lint:staged": "lint-staged",
-    "test": "jest --verbose",
+    "test": "jest --verbose src",
     "test:watch": "yarn test --watch -o",
     "precommit": "lint-staged"
   },
