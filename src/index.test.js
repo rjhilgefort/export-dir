@@ -1,7 +1,7 @@
 const { compose, keys } = require('ramda')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
-const Mocks = require('./test/mocks')
+const Mocks = require('../test/mocks')
 const exportDir = require('./index')
 
 const upperCamelCase = compose(upperFirst, camelCase)
