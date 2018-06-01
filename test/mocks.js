@@ -6,7 +6,7 @@ const Mocks = ({
 } = {}) => ({
   rootFolder,
   get root() {
-    return path.join(this.rootFolder, '__mocks__');
+    return path.join(this.rootFolder, 'test', '__mocks__');
   },
   get files() {
     return path.join(this.root, 'files');
