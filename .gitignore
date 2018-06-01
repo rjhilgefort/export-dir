@@ -21,6 +21,15 @@ yarn-error.log*
 /jspm_packages
 /bower_components
 
+# Purescript
+/.pulp-cache
+/output/
+/generated-docs
+/.psc-package
+/.psc*
+/.purs*
+/.psa*
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -88,3 +97,4 @@ $RECYCLE.BIN/
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+
