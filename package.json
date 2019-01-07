@@ -11,6 +11,8 @@
     "node": ">=6"
   },
   "scripts": {
+    "clean": "rm -rf ./node_modules",
+    "reinstall": "yarn clean && yarn install",
     "lint": "esw *.js src test",
     "lint:fix": "yarn lint --fix",
     "lint:watch": "yarn lint --watch",
@@ -21,7 +23,7 @@
   },
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
-    "ramda": "^0.25.0"
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "eslint": "^4.11.0",

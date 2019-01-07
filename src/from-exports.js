@@ -1,8 +1,8 @@
 // prettier-ignore
 const {
   curry, compose, fromPairs, map, adjust, repeat, __, when,
-  defaultTo, prop, always, head, isEmpty,
-  reject, anyPass, isNil, equals,
+  defaultTo, prop, always, head, isEmpty, reject, anyPass,
+  isNil, equals,
 } = require('ramda')
 const fs = require('fs');
 const { isNotString } = require('./utils');
@@ -32,7 +32,7 @@ module.exports = curry((transform, dir) =>
     reject(hasBadKey),
     map(
       compose(
-        adjust(makeKey(transform), 0),
+        adjust(0, makeKey(transform)),
         repeat(__, 2),
         requireFile(dir),
       ),
