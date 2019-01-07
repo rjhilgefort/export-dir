@@ -20,7 +20,10 @@ const makeKey = curry((desired, subject) =>
   )(subject),
 );
 
-const hasBadKey = compose(anyPass([isNil, isEmpty, equals('undefined')]), head);
+const hasBadKey = compose(
+  anyPass([isNil, isEmpty, equals('undefined')]),
+  head,
+);
 
 // fromExports :: (* -> String) => String<Dir> -> Object
 module.exports = curry((transform, dir) =>
@@ -28,7 +31,11 @@ module.exports = curry((transform, dir) =>
     fromPairs,
     reject(hasBadKey),
     map(
-      compose(adjust(makeKey(transform), 0), repeat(__, 2), requireFile(dir)),
+      compose(
+        adjust(makeKey(transform), 0),
+        repeat(__, 2),
+        requireFile(dir),
+      ),
     ),
     filterFiles,
     fs.readdirSync,

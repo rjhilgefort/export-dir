@@ -18,7 +18,12 @@ module.exports = curry((transform, dir) => {
 
   return compose(
     fromPairs,
-    map(compose(evolveArray([transformKey, requireFile(dir)]), repeat(__, 2))),
+    map(
+      compose(
+        evolveArray([transformKey, requireFile(dir)]),
+        repeat(__, 2),
+      ),
+    ),
     filterFiles,
     fs.readdirSync,
   )(dir);
