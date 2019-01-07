@@ -1,10 +1,10 @@
 // prettier-ignore
 const {
   curry, compose, defaultTo, replace, fromPairs, map, repeat, __,
+  evolve,
 } = require('ramda')
 const fs = require('fs');
 const camelCase = require('lodash.camelcase');
-const { evolveArray } = require('./utils');
 const { VALID_EXTENSION_R } = require('./lib/constants');
 const filterFiles = require('./lib/filter-files');
 const requireFile = require('./lib/require-file');
@@ -18,7 +18,12 @@ module.exports = curry((transform, dir) => {
 
   return compose(
     fromPairs,
-    map(compose(evolveArray([transformKey, requireFile(dir)]), repeat(__, 2))),
+    map(
+      compose(
+        evolve([transformKey, requireFile(dir)]),
+        repeat(__, 2),
+      ),
+    ),
     filterFiles,
     fs.readdirSync,
   )(dir);
