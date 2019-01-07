@@ -1,6 +1,6 @@
 {
   "name": "@rjhilgefort/export-dir",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Declarative `index.js` builder for exporting files in the same directory.",
   "main": "src/index.js",
   "repository": "git@github.com:rjhilgefort/export-dir.git",
@@ -18,8 +18,7 @@
     "lint:watch": "yarn lint --watch",
     "lint:staged": "lint-staged",
     "test": "jest --verbose src",
-    "test:watch": "yarn test --watch -o",
-    "precommit": "lint-staged"
+    "test:watch": "yarn test --watch -o"
   },
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
@@ -68,5 +67,10 @@
   },
   "eslintIgnore": [
     "__mocks__"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
