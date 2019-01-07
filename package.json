@@ -39,6 +39,9 @@
   "lint-staged": {
     "*.js": "esw"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "eslintConfig": {
     "extends": [
       "airbnb-base",
@@ -64,5 +67,4 @@
   "eslintIgnore": [
     "__mocks__"
   ]
-
 }
