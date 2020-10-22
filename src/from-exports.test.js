@@ -20,10 +20,7 @@ it('applies transform on objects', () => {
 
 it('applies transform on classes', () => {
   const expected = ['BarClass', 'FooClass', 'NONStandardClass'];
-  const actual = compose(
-    keys,
-    fromExports(prop('name')),
-  )(mocks.exportsClasses);
+  const actual = compose(keys, fromExports(prop('name')))(mocks.exportsClasses);
   expect(actual).toEqual(expected);
 });
 
@@ -38,9 +35,6 @@ it('applies transform on functions', () => {
 
 it('applies default transform on variety', () => {
   const expected = ['Class', 'func', 'OBJECT'];
-  const actual = compose(
-    keys,
-    fromExports(null),
-  )(mocks.exportsDefaults);
+  const actual = compose(keys, fromExports(null))(mocks.exportsDefaults);
   expect(actual).toEqual(expected);
 });
